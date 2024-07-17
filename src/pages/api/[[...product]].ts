@@ -13,6 +13,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   if (req.query.product![1]) {
+    // tanda seru : req.query.product tidak akan null atau undefined
     const data = await retrieveDataByID("products", req.query.product![1]);
     res.status(200).json({ status: true, statusCode: 200, data });
   } else {
