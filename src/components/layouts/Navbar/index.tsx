@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Navbar.module.css";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 
 export default function Navbar() {
   const { data }: any = useSession();
@@ -11,10 +12,12 @@ export default function Navbar() {
       <div className="big">Navbar</div>
       <div className="flex items-center gap-3">
         {data?.user?.image && (
-          <img
+          <Image
             src={data.user.image}
             alt="user-image"
             className="w-8 h-8 rounded-full"
+            width={10}
+            height={10}
           />
         )}
         <p>{data && data.user.fullname}</p>

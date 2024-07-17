@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Product.module.scss";
 import { ProductType } from "@/types/product.type";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductView({ products }: { products: ProductType[] }) {
   //   console.log(products);
@@ -19,7 +20,12 @@ export default function ProductView({ products }: { products: ProductType[] }) {
                 className={styles.product__content__item}
               >
                 <div className={styles.product__content__item__image}>
-                  <img src={product.image} alt={product.name} />
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    width={500}
+                    height={500}
+                  />
                 </div>
                 <h4 className={styles.product__content__item__name}>
                   {product.name}

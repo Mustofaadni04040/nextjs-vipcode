@@ -4,6 +4,7 @@ import styles from "./Login.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 export default function LoginView() {
   const [isLoading, setIsLoading] = useState(false);
@@ -91,10 +92,12 @@ export default function LoginView() {
             })
           }
         >
-          <img
+          <Image
             src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
             alt="google-icon"
             className="w-7 h-7"
+            width={20}
+            height={20}
           />
           Sign in with Google
         </button>
