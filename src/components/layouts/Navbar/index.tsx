@@ -10,6 +10,13 @@ export default function Navbar() {
     <div className={styles.navbar}>
       <div className="big">Navbar</div>
       <div className="flex items-center gap-3">
+        {data?.user?.image && (
+          <img
+            src={data.user.image}
+            alt="user-image"
+            className="w-8 h-8 rounded-full"
+          />
+        )}
         <p>{data && data.user.fullname}</p>
         {data ? (
           <button

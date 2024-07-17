@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import styles from "./Login.module.scss";
 import Link from "next/link";
@@ -21,6 +22,7 @@ export default function LoginView() {
         redirect: false,
         email: e.target.email.value,
         password: e.target.password.value,
+        callbackUrl,
       });
 
       if (!res?.error) {
@@ -79,16 +81,32 @@ export default function LoginView() {
           >
             {isLoading ? "logining..." : "login"}
           </button>
-          <p className="text-sm mt-2 text-center">
-            Don&apos;t have an account?{" "}
-            <Link
-              href="/auth/register"
-              className="text-blue-500 hover:text-blue-700 cursor-pointer"
-            >
-              Register
-            </Link>
-          </p>
         </form>
+        <button
+          className="w-full mt-3 p-2 flex items-center justify-center bg-white border border-slate-500 rounded"
+          onClick={() =>
+            signIn("google", {
+              callbackUrl,
+              redirect: false,
+            })
+          }
+        >
+          <img
+            src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+            alt="google-icon"
+            className="w-7 h-7"
+          />
+          Sign in with Google
+        </button>
+        <p className="text-sm mt-2 text-center">
+          Don&apos;t have an account?{" "}
+          <Link
+            href="/auth/register"
+            className="text-blue-500 hover:text-blue-700 cursor-pointer"
+          >
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );
